@@ -1,0 +1,35 @@
+<project name="Project4" default="compile">
+	
+	<target name="compile" depends="clean">
+		<javac srcdir="." includeantruntime="false"/>
+	</target>
+	
+	<target name="clean">
+		<delete>
+			<fileset dir="." includes="**/*.class/" defaultexcludes="no"/>
+		</delete>
+		<delete>
+			<fileset dir="." includes="**/*.*~/" defaultexcludes="no"/>
+		</delete>
+		<delete>
+			<fileset dir="." includes="**/*.txt/" defaultexcludes="no"/>
+		</delete>
+		<delete>
+			<fileset dir="." includes="**/*.jar/" defaultexcludes="no"/>
+		</delete>
+		<delete dir="META-INF"/>
+	</target>
+	
+	<target name="run" depends="compile,author">
+		<java classname="tcnj.handd1.Driver" classpath="." fork="yes"/>
+	</target>
+	
+	<target name="author">
+		<echo message="David Hand"/>
+	</target>
+	
+	<target name="jar">
+		<jar destfile="handd1.jar" basedir="." includes="**/*.java,**/*.xml"/>
+	</target>
+
+</project> 
